@@ -1,0 +1,15 @@
+name: CI
+on: [push, pull_request]
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - run: bash tests/run.sh
+      - run: node --check extension.js
+      - name: Palette contract (against the compiler repo main)
+        run: |
+          B=https://raw.githubusercontent.com/turmeric-lang/turmeric/main
+          curl -fsSL $B/web/editor-palette.json -o /tmp/palette.json
+          curl -fsSL $B/tests/check-editor-palette.py -o /tmp/check-editor-palette.py
+          python3 /tmp/check-editor-palette.py /tmp/palette.json dark=themes/turmeric-dark-color-theme.json light=themes/turmeric-light-color-theme.json
