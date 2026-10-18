@@ -3,7 +3,7 @@
   "displayName": "Turmeric Syntax Highlighting",
   "description": "Syntax highlighting for Turmeric (.tur) files with sweet-exp support",
   "version": "0.2.0",
-  "publisher": "fith-lang",
+  "publisher": "turmeric-lang",
   "license": "MIT",
   "main": "./extension.js",
   "engines": {
